@@ -9,23 +9,23 @@
 
 struct versioning_info
 {
-    unsigned int const major_;
-    unsigned int const minor_;
-    unsigned int const patch_;
+    unsigned int const major;
+    unsigned int const minor;
+    unsigned int const patch;
 
     versioning_info(unsigned int major,
                     unsigned int minor,
                     unsigned int patch)
-       : major_(major),
-         minor_(minor),
-         patch_(patch)
+       : major(major),
+         minor(minor),
+         patch(patch)
     {}
 
     friend std::ostream& operator<<(std::ostream& os, const versioning_info& ver)
     {
-        os << ver.major_ << '.'
-           << ver.minor_ << '.'
-           << ver.patch_;
+        os << ver.major << '.'
+           << ver.minor << '.'
+           << ver.patch;
         return os;
     }
 
@@ -34,10 +34,10 @@ struct versioning_info
     versioning_info& operator=(const versioning_info&) = delete;
 }; 
 
-inline
-versioning_info version()
+constexpr versioning_info version()
 {
-    static versioning_info ver(EXAMPLE_VERSION_MAJOR, EXAMPLE_VERSION_MINOR, EXAMPLE_VERSION_PATCH);
+    static constexpr versioning_info ver(EXAMPLE_VERSION_MAJOR, EXAMPLE_VERSION_MINOR, EXAMPLE_VERSION_PATCH);
     return ver;
 }
+
 #endif

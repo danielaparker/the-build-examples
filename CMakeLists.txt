@@ -7,10 +7,9 @@ set(EXAMPLE_TARGET example)
 set(EXAMPLE_PROJECT_DIR ${PROJECT_SOURCE_DIR})
 set(EXAMPLE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_executable(example src/example.cpp)
+add_executable(${EXAMPLE_TARGET} src/example.cpp)
 
-target_include_directories(${EXAMPLE_TARGET} INTERFACE $<BUILD_INTERFACE:${EXAMPLE_INCLUDE_DIR}>
-                                           $<INSTALL_INTERFACE:include>)
+target_include_directories (${EXAMPLE_TARGET} PUBLIC ${EXAMPLE_INCLUDE_DIR})
 
 #  “generator expressions” with the syntax $<...>.
 

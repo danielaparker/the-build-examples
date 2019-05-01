@@ -83,21 +83,6 @@ matrix:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-          packages:
-            - clang-3.9
-            - g++-4.8-aarch64-linux-gnu
-            - gcc-4.8-aarch64-linux-gnu
-            - g++-4.8-multilib
-            - gcc-4.8-multilib
-            - qemu
-            - qemu-system-arm
-      env: COMPILER=clang VERSION=3.9 CROSS_COMPILE=1 ARM_ARCH_DIR=aarch64-linux-gnu GCC_VER=4.8.4 ARM_SETTINGS="armv8-a -target aarch64-linux-gnueabi" CXXFLAGS="-std=c++11" 
-
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
             - llvm-toolchain-trusty-4.0
           packages:
             - clang-4.0
@@ -165,28 +150,8 @@ install:
        cmake --version
      fi
 
-    - if [[ "$CROSS_COMPILE" == 1 ]] ; then
-        if [[ "$ARM_ARCH_DIR" == "aarch64-linux-gnu" ]] ; then
-          mkdir $HOME/linker_bin ;
-          ln -s /usr/bin/aarch64-linux-gnu-ld $HOME/linker_bin/ld ;
-          echo "SETTING GNU LINKER DIR" ;
-          ls -al $HOME/linker_bin/ld ;
-          cmake . -DBUILD_TESTS=ON -DCROSS_COMPILE_ARM=ON -DDOWNLOAD_GTEST=ON -DARM_ARCH_DIRECTORY="$ARM_ARCH_DIR" -DARM_GCC_VER="$GCC_VER" -DTARGET_ARCH="$ARM_SETTINGS --prefix=$HOME/linker_bin/"  ${CMAKE_OPTIONS};
-        else
-          cmake . -DBUILD_TESTS=ON -DCROSS_COMPILE_ARM=ON -DDOWNLOAD_GTEST=ON -DARM_ARCH_DIRECTORY="$ARM_ARCH_DIR" -DARM_GCC_VER="$GCC_VER" -DTARGET_ARCH="$ARM_SETTINGS"  ${CMAKE_OPTIONS};
-        fi
-      else
-        cmake . -DBUILD_TESTS=ON  ${CMAKE_OPTIONS};
-      fi
+      cmake . -DBUILD_TESTS=ON  ${CMAKE_OPTIONS};
     - make -j2 example
-    - cd tests
 script:
-    - if [[ "$CROSS_COMPILE" == 1 ]]; then
-        if [[ "$ARM_ARCH_DIR" == "aarch64-linux-gnu" ]]; then
-          qemu-aarch64 -L /usr/aarch64-linux-gnu/ ./example ;
-        else
-          qemu-arm -L /usr/arm-linux-gnueabi/ ./example ;
-        fi
-      else
-        ./example;
-      fi
+      ./example;
+

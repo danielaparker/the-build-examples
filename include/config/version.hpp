@@ -40,4 +40,4 @@ versioning_info version()
     static versioning_info ver(EXAMPLE_VERSION_MAJOR, EXAMPLE_VERSION_MINOR, EXAMPLE_VERSION_PATCH);
     return ver;
 }
-
+#endif

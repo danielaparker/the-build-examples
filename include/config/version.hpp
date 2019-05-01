@@ -24,8 +24,7 @@ struct versioning_info
 
 constexpr versioning_info version()
 {
-    constexpr versioning_info ver{EXAMPLE_VERSION_MAJOR, EXAMPLE_VERSION_MINOR, EXAMPLE_VERSION_PATCH};
-    return ver;
+    return versioning_info{EXAMPLE_VERSION_MAJOR, EXAMPLE_VERSION_MINOR, EXAMPLE_VERSION_PATCH};
 }
 
 #endif

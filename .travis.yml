@@ -155,5 +155,9 @@ install:
       cmake . -DBUILD_TESTS=ON  ${CMAKE_OPTIONS};
     - make -j2 example
 script:
-      ./example;
+    - if [[ "$JSONCONS_VALGRIND" == 1 ]]; then
+        ctest -T memcheck
+      else
+        ./example;
+      fi
 

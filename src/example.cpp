@@ -3,5 +3,6 @@
 
 int main()
 {
-    std::cout << "Hello world\n"; 
+    double* leak = new double[10];
+    std::cout << "Hello!" << std::endl;
 }

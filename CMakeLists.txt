@@ -19,6 +19,7 @@ endif()
 include (CTest)
 
 add_executable(${EXAMPLE_TARGET} src/example.cpp)
+add_test(example_test example)
 
 target_include_directories (${EXAMPLE_TARGET} PUBLIC ${EXAMPLE_INCLUDE_DIR})
 

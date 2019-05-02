@@ -22,7 +22,9 @@ matrix:
           packages:
             - g++-4.9
             - libgmp-dev
-      env: COMPILER=gcc VERSION=4.9 SANITIZE=1 CXXFLAGS="-std=c++11" 
+            - valgrind
+            - ninja-build
+      env: COMPILER=gcc VERSION=4.9 SANITIZE=1 JSONCONS_VALGRIND=1 CXXFLAGS="-std=c++11" 
 
     - os: linux
       addons:

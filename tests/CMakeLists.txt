@@ -2,10 +2,7 @@ cmake_minimum_required (VERSION 3.9)
 
 project (example)
 
-set(EXAMPLE_TARGET example)
-
-set(EXAMPLE_PROJECT_DIR ${PROJECT_SOURCE_DIR})
-set(EXAMPLE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(EXAMPLE_TARGET test_examples)
 
 set(EXAMPLE_TESTS_DIR ${EXAMPLE_PROJECT_DIR}/tests)
 set(EXAMPLE_TESTS_SOURCE_DIR ${EXAMPLE_PROJECT_DIR}/tests/src)

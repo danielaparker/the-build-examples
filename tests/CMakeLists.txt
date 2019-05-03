@@ -25,7 +25,7 @@ file(GLOB_RECURSE EXAMPLES_TESTS_SOURCES ${EXAMPLES_TESTS_SOURCE_DIR}/*.cpp)
 include (CTest)
 
 add_executable(${EXAMPLES_TARGET} EXCLUDE_FROM_ALL ${EXAMPLES_TESTS_SOURCES})
-add_test(example_test example)
+# add_test(example_test example)
 
 target_include_directories (${EXAMPLES_TARGET} PUBLIC ${EXAMPLES_INCLUDE_DIR})
 target_link_libraries(${EXAMPLES_TARGET} Catch)

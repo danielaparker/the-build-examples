@@ -158,6 +158,6 @@ script:
     - if [[ "$JSONCONS_VALGRIND" == 1 ]]; then
         ctest -T memcheck;
       else
-        ./example;
+        ./test_examples;
       fi
 

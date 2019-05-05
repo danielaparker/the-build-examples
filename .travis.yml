@@ -24,7 +24,7 @@ matrix:
             - libgmp-dev
             - valgrind
             - ninja-build
-      env: COMPILER=gcc VERSION=4.9 SANITIZE=1 JSONCONS_VALGRIND=1 CXXFLAGS="-std=c++11" 
+      env: COMPILER=gcc VERSION=4.9 SANITIZE=1 JSONCONS_VALGRIND=1 CXXFLAGS="-std=c++11" CMAKE_OPTIONS="-G Ninja -DCMAKE_BUILD_TYPE=Debug"
 
     - os: linux
       addons:
@@ -153,7 +153,6 @@ install:
      fi
 
       cmake . -DBUILD_TESTS=ON  ${CMAKE_OPTIONS};
-    - make -j2 test_examples
 script:
     - if [[ "$JSONCONS_VALGRIND" == 1 ]]; then
         ctest -T memcheck;

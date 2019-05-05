@@ -30,5 +30,5 @@ add_executable(${EXAMPLES_TARGET} EXCLUDE_FROM_ALL ${EXAMPLES_TESTS_SOURCES})
 target_include_directories (${EXAMPLES_TARGET} PUBLIC ${EXAMPLES_INCLUDE_DIR})
 target_link_libraries(${EXAMPLES_TARGET} Catch)
 
-add_custom_target(jtest COMMAND test_examples DEPENDS ${EXAMPLES_TARGET})
+# add_custom_target(jtest COMMAND test_examples DEPENDS ${EXAMPLES_TARGET})
 
